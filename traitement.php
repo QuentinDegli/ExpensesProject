@@ -19,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $checkQuery = "SELECT COUNT(*) FROM users WHERE email = :email";
         $checkStmt = $pdo->prepare($checkQuery);
         $checkStmt->execute(['email' => $email]);
+        // Utilisation du fetch column car on doit récupérer une seule valeur 
+        // ainsi c'est plus efficace pour les performances de la page 
         $userCount = $checkStmt->fetchColumn();
 
         if ($userCount > 0) {

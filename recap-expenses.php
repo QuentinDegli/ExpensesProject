@@ -60,6 +60,7 @@ $expenses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td>
                 <?php
                 if ($expense['filename']) {
+                    // Si la dépense à un fichier uploadé, on pourra y accéder par un lien. Ici l'interpolation de caractères permet d'insérer dynamiquement la valeur. 
                     echo "<a href='uploads/{$expense['filename']}' target='_blank'>Télécharger</a>";
                 } else {
                     echo "Aucun fichier";
